@@ -252,6 +252,16 @@ then
     cp $ProcessorType/PartitionInfoBBTest.efi                  $Framework/Test/ > NUL
     cp $ProcessorType/UFSDeviceConfigBBTest.efi                $Framework/Test/ > NUL
     cp $ProcessorType/ResetNotificationBBTest.efi              $Framework/Test/ > NUL
+
+    if [ "$ProcessorType" = "AARCH64" ]; then
+      cp $ProcessorType/PlatformResetAttackMitigationPsciTest.efi $Framework/Test/ > NUL
+      cp $ProcessorType/BBSRVariableSizeTest.efi                  $Framework/Test/ > NUL
+      cp $ProcessorType/SysEnvConfigBBTest.efi                    $Framework/Test/ > NUL
+      cp $ProcessorType/EfiSpecVerLvlBBTest.efi                   $Framework/Test/ > NUL
+      cp $ProcessorType/SbbrBootServicesBBTest.efi                $Framework/Test/ > NUL
+      cp $ProcessorType/RequiredUefiProtocolsBBTest.efi           $Framework/Test/ > NUL
+    fi
+
     # Only include RiscVBootProtocolBBTest.efi if the file exists (true on RISCV64)
     if [ -e $ProcessorType/RiscVBootProtocolBBTest.efi ]; then
       cp $ProcessorType/RiscVBootProtocolBBTest.efi              $Framework/Test/ > NUL
