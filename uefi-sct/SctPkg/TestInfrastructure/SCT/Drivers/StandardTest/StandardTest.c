@@ -578,7 +578,7 @@ Returns:
   // Build assertion detail string
   //
   VA_START(Marker, Detail);
-  SctVSPrint (AssertionDetail, EFI_MAX_PRINT_BUFFER, Detail, Marker);
+  SctVSPrint (AssertionDetail, sizeof (AssertionDetail), Detail, Marker);
   VA_END (Marker);
 
   if ( SctStrLen (AssertionDetail) + 5 < EFI_MAX_PRINT_BUFFER) {
@@ -606,7 +606,7 @@ Returns:
     break;
   }
 
-  SctSPrint (Buffer, EFI_MAX_PRINT_BUFFER,
+  SctSPrint (Buffer, sizeof (Buffer),
       L"%s -- %s\n"
       L"%g\n"
       L"%s\n",
@@ -627,7 +627,7 @@ Returns:
   //
   // write key file detail line
   //
-  SctSPrint (Buffer, EFI_MAX_PRINT_BUFFER, L"%g:%s|%s:%s",
+  SctSPrint (Buffer, sizeof (Buffer), L"%g:%s|%s:%s",
           &EventId, AssertionType, Description, AssertionDetail);
   if ( SctStrLen (Buffer) + 3 < EFI_MAX_PRINT_BUFFER ) {
     SctStrCat (Buffer, L"\r\n");
@@ -680,7 +680,7 @@ Returns:
 
   if (VerboseLevel <= Private->VerboseLevel) {
     VA_START(Marker, Message);
-    SctVSPrint (Buffer, EFI_MAX_PRINT_BUFFER, Message, Marker);
+    SctVSPrint (Buffer, sizeof (Buffer), Message, Marker);
     VA_END (Marker);
 
     if ( SctStrLen (Buffer) + 3 < EFI_MAX_PRINT_BUFFER ) {
